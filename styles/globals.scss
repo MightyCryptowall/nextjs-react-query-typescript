@@ -1,0 +1,220 @@
+//==============================================================================
+// Configuration
+//==============================================================================
+
+// @import "~primitive-ui/src/scss/base/variables";
+@import "./base/variables";
+@import "~primitive-ui/src/scss/base/mixins";
+
+//==============================================================================
+// Reset
+//==============================================================================
+
+@import "~primitive-ui/src/scss/base/normalize";
+@import "~primitive-ui/src/scss/base/reset";
+
+//==============================================================================
+// Components
+//==============================================================================
+
+@import "~primitive-ui/src/scss/components/scaffolding";
+@import "~primitive-ui/src/scss/components/grid";
+@import "~primitive-ui/src/scss/components/helpers";
+@import "~primitive-ui/src/scss/components/buttons";
+@import "~primitive-ui/src/scss/components/forms";
+@import "~primitive-ui/src/scss/components/tables";
+
+//==============================================================================
+// Shopping App
+//==============================================================================
+
+[type="color"],
+[type="date"],
+[type="datetime"],
+[type="datetime-local"],
+[type="email"],
+[type="month"],
+[type="number"],
+[type="password"],
+[type="search"],
+[type="tel"],
+[type="text"],
+[type="url"],
+[type="week"],
+[type="time"],
+select,
+textarea {
+  color: white;
+}
+
+#main-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+#logo {
+  width: 33px;
+  margin-right: 6px;
+}
+
+.side-menu {
+  border-right: 1px solid $primary-color;
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.error {
+  color: $error;
+}
+
+// Shopping List
+#items-list {
+  ul {
+    padding-left: 0;
+    li {
+      list-style: none;
+      text-transform: capitalize;
+      margin: 15px 0;
+      position: relative;
+      padding-bottom: 12px;
+      align-items: end;
+
+      &::after {
+        position: absolute;
+        width: calc(100% - 1rem);
+        height: 1px;
+        background: $primary-color;
+        left: 1rem;
+        bottom: 0;
+        content: "";
+      }
+
+      p {
+        margin-bottom: 4px;
+
+        &.small {
+          margin: 0;
+          font-size: 0.8rem;
+          color: rgba($primary-color, 0.8);
+        }
+      }
+
+      .actions {
+        display: flex;
+        justify-content: end;
+        button {
+          margin: 0 0 0 10px;
+          height: min-content;
+          padding: 12px 21px;
+        }
+      }
+    }
+  }
+
+  .form-check {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 0;
+  }
+
+  .form-check .form-check-label {
+    min-height: 18px;
+    display: block;
+    margin-left: 2rem;
+    line-height: 1.5;
+  }
+  .form-check .form-check-label input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 0;
+    margin-top: 0;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    width: 30px;
+    height: 30px;
+  }
+  .form-check .form-check-label input[type="checkbox"] + .input-frame:before,
+  .form-check .form-check-label input[type="checkbox"] + .input-frame:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .form-check .form-check-label input[type="checkbox"] + .input-frame:before {
+    content: "";
+    width: 25px;
+    height: 25px;
+    border-radius: 2px;
+    border: solid $primary-color;
+    border-width: 2px;
+    transition: all;
+    transition-duration: 0s;
+    transition-duration: 250ms;
+  }
+  .form-check .form-check-label input[type="checkbox"] + .input-frame:after {
+    transition: all;
+    transition-duration: 0s;
+    transition-duration: 250ms;
+    content: "✓";
+    opacity: 0;
+    filter: alpha(opacity=0);
+    transform: scale(0);
+    font-size: 1.9rem;
+    font-weight: bold;
+    color: $primary-color;
+  }
+  .form-check
+    .form-check-label
+    input[type="checkbox"]:checked
+    + .input-frame:before {
+    background: transparent;
+  }
+  .form-check
+    .form-check-label
+    input[type="checkbox"]:checked
+    + .input-frame:after {
+    width: 25px;
+    opacity: 1;
+    line-height: 25px;
+    filter: alpha(opacity=100);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  .form-check
+    .form-check-label
+    input[type="checkbox"]:disabled
+    + .input-frame:before {
+    border-color: #e8ebf1;
+  }
+  .form-check
+    .form-check-label
+    input[type="checkbox"]:disabled:checked
+    + .input-frame:after {
+    background: #e8ebf1;
+    color: #ffffff;
+  }
+}
+
+// Edit Form specific
+.edit-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+//Responsive
+
+@media only screen and (max-width: $desktop) {
+  .side-menu {
+    order: 2;
+    border: none;
+  }
+}
